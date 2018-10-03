@@ -1,12 +1,16 @@
 <template>
   <div id="app">
-    <h1>Cost Splitter</h1>
+    <navbar></navbar>
   </div>
 </template>
 
 <script>
-export default {
+import Navbar from "./components/Navbar.vue";
 
+export default {
+  components: {
+    Navbar: Navbar
+  }
 }
 </script>
 
