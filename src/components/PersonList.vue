@@ -1,14 +1,13 @@
 <template>
-  <div class="container pt-5">
-    <ul class="list-group">
+    <ul class="list-group pt-5">
       <Person 
         v-for="(person, index) in people" 
         :key="index"
         :name="person.name"
-        :spent="Number(person.spent)">
+        :spent="Number(person.spent)"
+        :owed="amtOwedPerPerson - person.spent">
       </Person>
     </ul>
-  </div>
 </template>
 
 <script>
@@ -19,7 +18,11 @@ export default {
     Person: Person
   },
   props: {
-    people: Array
+    people: Array,
+    amtOwedPerPerson: {
+      type: Number,
+      default: 0
+    }
   }
 }
 </script>

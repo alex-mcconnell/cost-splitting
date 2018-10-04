@@ -1,7 +1,7 @@
 <template>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-    <h3>{{ name }} spent {{ formattedSpent }}</h3>
-    <h2><span class="badge" :class="pillColor">{{ formattedSpent }}</span></h2>
+    <h3>{{ name }} spent {{ spentFormatted }}</h3>
+    <h2><span class="badge" :class="pillColor">{{ owedFormatted }}</span></h2>
   </li>
 </template>
 
@@ -13,11 +13,14 @@ export default {
     owed: Number
   },
   computed: {
-    formattedSpent() {
+    spentFormatted() {
       return ('$' + (this.spent).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')).replace('-', '');
     },
+    owedFormatted() {
+      return ('$' + (this.owed).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')).replace('-', '');
+    },
     pillColor() {
-      return this.spent > 0 ? 'badge-primary' : 'badge-secondary';
+      return this.owed <= 0 ? 'badge-primary' : 'badge-secondary';
     }
   }
 }

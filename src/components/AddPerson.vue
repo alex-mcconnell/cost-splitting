@@ -1,9 +1,8 @@
 <template>
-  <div class="container pt-5">
     <form @submit.prevent="handleAddPerson">
       <fieldset>
         <div class="row justify-content-center">
-          <div class="col-sm-auto pb-4">
+          <div class="col-sm-auto p-2">
             <input 
               type="text" 
               class="form-control"
@@ -12,7 +11,7 @@
               v-model="person.name"
               required>
           </div>
-          <div class="col-sm-auto pb-4">
+          <div class="col-sm-auto p-2">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
@@ -28,14 +27,12 @@
                 required>
             </div>
           </div>
-          <div class="col-auto pb-4">
+          <div class="col-auto p-2">
             <button type="submit" class="btn btn-primary">Add Person</button>
           </div>
         </div>
       </fieldset>
     </form>
-    <hr>
-  </div>
 </template>
 
 <script>
@@ -52,7 +49,7 @@ export default {
     handleAddPerson() {
       let newPerson = {
         name: this.person.name,
-        spent: this.person.spent
+        spent: Number(this.person.spent)
       };
 
       this.$emit('person-added', newPerson);

@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <navbar :totalCost="totalCostFormatted" />
-    <add-person v-on:person-added="people.push($event)"/>
-    <person-list :people="people" />
+    <div class="container pt-5">
+      <add-person v-on:person-added="people.push($event)"/>
+      <hr>
+      <person-list :people="people" :amtOwedPerPerson="amtOwedPerPerson"/>
+    </div>
   </div>
 </template>
 
@@ -19,18 +22,27 @@ export default {
   },
   data() {
     return {
-      totalCost: 0,
       people: []
     }
   },
   computed: {
+    totalCost() {
+      return this.people.reduce((total, person) => {
+        return total + person.spent;
+      }, 0);
+    },
     totalCostFormatted() {
       return '$' + (this.totalCost).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    },
+    amtOwedPerPerson() {
+      return this.totalCost / this.people.length;
     }
   }
 }
 </script>
 
-<style>
-
+<style scoped>
+  .container {
+    margin-top: 56px;
+  }
 </style>
