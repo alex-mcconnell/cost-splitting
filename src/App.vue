@@ -14,12 +14,15 @@ import Navbar from './components/Navbar.vue';
 import AddPerson from './components/AddPerson.vue';
 import PersonList from './components/PersonList.vue';
 
+import formatNumberToCurrency from './mixins/formatNumberToCurrency.js';
+
 export default {
   components: {
     Navbar: Navbar,
     AddPerson: AddPerson,
     PersonList: PersonList
   },
+  mixins: [formatNumberToCurrency],
   data() {
     return {
       people: []
@@ -32,7 +35,7 @@ export default {
       }, 0);
     },
     totalCostFormatted() {
-      return '$' + (this.totalCost).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+      return formatNumberToCurrency(this.totalCost);
     },
     amtOwedPerPerson() {
       return this.totalCost / this.people.length;

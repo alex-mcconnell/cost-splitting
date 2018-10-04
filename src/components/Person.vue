@@ -6,18 +6,21 @@
 </template>
 
 <script>
+import formatNumberToCurrency from '../mixins/formatNumberToCurrency.js';
+
 export default {
   props: {
     name: String,
     spent: Number,
     owed: Number
   },
+  mixins: [formatNumberToCurrency],
   computed: {
     spentFormatted() {
-      return ('$' + (this.spent).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')).replace('-', '');
+      return formatNumberToCurrency(this.spent);
     },
     owedFormatted() {
-      return ('$' + (this.owed).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')).replace('-', '');
+      return formatNumberToCurrency(this.owed);
     },
     pillColor() {
       return this.owed <= 0 ? 'badge-primary' : 'badge-secondary';
