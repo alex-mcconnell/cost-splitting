@@ -4,7 +4,7 @@
           <a class="navbar-brand" href="#">Cost Splitting</a>        
         </div>
         <div class="nav navbar-nav navbar-right">
-          <h4 class="mb-1">Total Cost: {{ totalCost }}</h4>
+          <h5 class="mb-1">Total Cost: <span class="text-muted">{{ totalCost }}</span></h5>
         </div>
   </nav>
 </template>
