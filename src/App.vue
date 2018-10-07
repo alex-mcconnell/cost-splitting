@@ -14,7 +14,7 @@ import Navbar from './components/Navbar.vue';
 import AddPerson from './components/AddPerson.vue';
 import PersonList from './components/PersonList.vue';
 
-import formatNumberToCurrency from './mixins/formatNumberToCurrency.js';
+import {formatNumber} from './mixins/formatNumber.js';
 
 export default {
   components: {
@@ -22,7 +22,7 @@ export default {
     AddPerson: AddPerson,
     PersonList: PersonList
   },
-  mixins: [formatNumberToCurrency],
+  mixins: [formatNumber],
   data() {
     return {
       people: []
@@ -35,7 +35,7 @@ export default {
       }, 0);
     },
     totalCostFormatted() {
-      return formatNumberToCurrency(this.totalCost);
+      return formatNumber.toCurrency(this.totalCost);
     },
     amtOwedPerPerson() {
       return this.totalCost / this.people.length;

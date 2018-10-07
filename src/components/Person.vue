@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import formatNumberToCurrency from '../mixins/formatNumberToCurrency.js';
+import {formatNumber} from '../mixins/formatNumber.js';
 
 export default {
   props: {
@@ -14,13 +14,13 @@ export default {
     spent: Number,
     owed: Number
   },
-  mixins: [formatNumberToCurrency],
+  mixins: [formatNumber],
   computed: {
     spentFormatted() {
-      return formatNumberToCurrency(this.spent);
+      return formatNumber.toCurrency(this.spent);
     },
     owedFormatted() {
-      return formatNumberToCurrency(this.owed);
+      return formatNumber.toCurrency(this.owed);
     },
     pillColor() {
       return this.owed <= 0 ? 'badge-primary' : 'badge-secondary';
