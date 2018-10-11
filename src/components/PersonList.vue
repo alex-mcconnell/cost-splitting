@@ -3,15 +3,17 @@
       <Person 
         v-for="(person, index) in people" 
         :key="index"
+        :id="index"
         :name="person.name"
         :spent="Number(person.spent)"
-        :owed="amtOwedPerPerson - person.spent">
+        :owed="amtOwedPerPerson - person.spent"        
+        @delete-person="people.splice($event, 1)">
       </Person>
     </ul>
 </template>
 
 <script>
-import Person from '../components/Person.vue';
+import Person from '../components/Person.vue'
 
 export default {
   components: {

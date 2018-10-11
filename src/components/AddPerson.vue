@@ -52,7 +52,7 @@ export default {
         spent: Number(this.person.spent)
       };
 
-      this.$emit('person-added', newPerson);
+      this.$emit('add-person', newPerson);
       
       // Clear fields and refocus cursor
       this.person.name = '';
