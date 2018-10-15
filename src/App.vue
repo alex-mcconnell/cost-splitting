@@ -3,8 +3,14 @@
     <navbar :totalCost="totalCostFormatted" />
     <div class="container pt-5">
       <add-person @add-person="people.push($event)" />
-      <hr>
-      <person-list :people="people" :amtOwedPerPerson="amtOwedPerPerson" />
+      <hr class="pb-5">
+      <p v-if="people.length == 0" class="text-center"><span class="text-muted">Add a person to get started</span></p>
+      <person-list
+        v-else
+        :people="people" 
+        :amtOwedPerPerson="amtOwedPerPerson"
+        @delete-person="people.splice($event, 1)"
+        @edit-person="handleEditPerson($event)" />
     </div>
   </div>
 </template>
@@ -44,6 +50,16 @@ export default {
     },
     amtOwedPerPerson() {
       return this.totalCost / this.people.length;
+    }
+  },
+  methods: {
+    handleEditPerson(data) {
+      let id = data.id;
+      let person = {
+        name: data.editPerson.name,
+        spent: Number(data.editPerson.spent)
+      }
+      this.people.splice(id, 1, person);
     }
   },
   watch: {
