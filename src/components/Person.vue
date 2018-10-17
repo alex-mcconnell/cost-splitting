@@ -1,5 +1,5 @@
 <template>
-  <li v-if="!isEditable" class="list-group-item d-flex justify-content-between align-items-center">
+  <li v-if="!isEditable" class="list-group-item d-flex justify-content-between align-items-center col-xs-1">
     <div class="d-flex align-items-center">
       <font-awesome-icon icon="edit" class="mr-3" @click="handleStartEdit" />
       <font-awesome-icon icon="trash-alt" class="mr-3" @click="handleDeletePerson" />   
@@ -7,6 +7,7 @@
     </div>
     <h2><span class="badge" :class="pillColor">{{ owedFormatted }}</span></h2>
   </li>
+
   <li v-else class="list-group-item d-flex justify-content-between align-items-center">
     <div class="d-flex align-items-center">
       <font-awesome-icon icon="save" class="mr-3" @click="handleSaveEdit" />

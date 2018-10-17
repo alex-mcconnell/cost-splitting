@@ -5,13 +5,28 @@
       <add-person @add-person="people.push($event)" />
       <hr class="pb-5">
       <p v-if="people.length == 0" class="text-center"><span class="text-muted">Add a person to get started</span></p>
-      <person-list
-        v-else
-        :people="people" 
-        :amtOwedPerPerson="amtOwedPerPerson"
-        @delete-person="people.splice($event, 1)"
-        @edit-person="handleEditPerson($event)" />
+      <div  v-else>
+        <div class="d-flex justify-content-end">
+          <button
+            class="btn btn-info mr-3"
+            @click="handleSort" >Sort by $ Owed <font-awesome-icon 
+            :icon="sortAsc ? 'angle-up' : 'angle-down'" /></button>
+            <button
+            class="btn btn-danger"
+            @click="cancelModalDisplay = 'block'">Reset List</button>  
+        </div>
+        <person-list
+          class="pt-5"
+          :people="people" 
+          :amtOwedPerPerson="amtOwedPerPerson"
+          @delete-person="people.splice($event, 1)"
+          @edit-person="handleEditPerson($event)" />        
+      </div>
     </div>
+    <reset-modal 
+      @cancel-reset-list="cancelModalDisplay = 'none'"
+      @reset-list="resetList"
+      :style="{display: cancelModalDisplay}" ></reset-modal>
   </div>
 </template>
 
@@ -19,6 +34,7 @@
 import Navbar from './components/Navbar.vue'
 import AddPerson from './components/AddPerson.vue'
 import PersonList from './components/PersonList.vue'
+import ResetModal from './components/ResetModal.vue'
 
 import { formatNumber } from './mixins/formatNumber.js'
 
@@ -26,7 +42,8 @@ export default {
   components: {
     Navbar: Navbar,
     AddPerson: AddPerson,
-    PersonList: PersonList
+    PersonList: PersonList,
+    ResetModal: ResetModal
   },
   mixins: [formatNumber],
   mounted() {
@@ -36,7 +53,9 @@ export default {
   },
   data() {
     return {
-      people: []
+      people: [],
+      sortAsc: true,
+      cancelModalDisplay: 'none' 
     }
   },
   computed: {
@@ -60,6 +79,22 @@ export default {
         spent: Number(data.editPerson.spent)
       }
       this.people.splice(id, 1, person);
+    },
+    handleSort() {
+      this.sortAsc = !this.sortAsc;
+
+      this.people.sort((a, b) => {
+        if (a.spent - this.amtOwedPerPerson < b.spent - this.amtOwedPerPerson) {
+          return this.sortAsc ? 1 : -1
+        } else if (a.spent - this.amtOwedPerPerson > b.spent - this.amtOwedPerPerson) {
+          return !this.sortAsc ? 1 : -1
+        }    
+        return 0;
+      });
+    },
+    resetList() {
+      this.people = [];
+      this.cancelModalDisplay = 'none';
     }
   },
   watch: {
