@@ -19,5 +19,5 @@ export default {
       default: '$0.00'
     }
   }
-}
+};
 </script>

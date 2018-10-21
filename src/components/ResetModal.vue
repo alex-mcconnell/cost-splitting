@@ -28,11 +28,11 @@ export default {
   props: {
     display: String
   }
-}
+};
 </script>
 
 <style>
-  .modal {
-    background-color: rgba(46, 46, 46, 0.85);
-  }
+.modal {
+  background-color: rgba(46, 46, 46, 0.85);
+}
 </style>

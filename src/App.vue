@@ -31,12 +31,12 @@
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue'
-import AddPerson from './components/AddPerson.vue'
-import PersonList from './components/PersonList.vue'
-import ResetModal from './components/ResetModal.vue'
+import Navbar from './components/Navbar.vue';
+import AddPerson from './components/AddPerson.vue';
+import PersonList from './components/PersonList.vue';
+import ResetModal from './components/ResetModal.vue';
 
-import { formatNumber } from './mixins/formatNumber.js'
+import { formatNumber } from './mixins/formatNumber.js';
 
 export default {
   components: {
@@ -55,8 +55,8 @@ export default {
     return {
       people: [],
       sortAsc: true,
-      cancelModalDisplay: 'none' 
-    }
+      cancelModalDisplay: 'none'
+    };
   },
   computed: {
     totalCost() {
@@ -77,7 +77,7 @@ export default {
       let person = {
         name: data.editPerson.name,
         spent: Number(data.editPerson.spent)
-      }
+      };
       this.people.splice(id, 1, person);
     },
     handleSort() {
@@ -85,10 +85,13 @@ export default {
 
       this.people.sort((a, b) => {
         if (a.spent - this.amtOwedPerPerson < b.spent - this.amtOwedPerPerson) {
-          return this.sortAsc ? 1 : -1
-        } else if (a.spent - this.amtOwedPerPerson > b.spent - this.amtOwedPerPerson) {
-          return !this.sortAsc ? 1 : -1
-        }    
+          return this.sortAsc ? 1 : -1;
+        } else if (
+          a.spent - this.amtOwedPerPerson >
+          b.spent - this.amtOwedPerPerson
+        ) {
+          return !this.sortAsc ? 1 : -1;
+        }
         return 0;
       });
     },
@@ -102,14 +105,14 @@ export default {
       handler() {
         localStorage.setItem('people', JSON.stringify(this.people));
       },
-      deep:true
+      deep: true
     }
   }
-}
+};
 </script>
 
 <style scoped>
-  .container {
-    margin-top: 56px;
-  }
+.container {
+  margin-top: 56px;
+}
 </style>

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Person from '../components/Person.vue'
+import Person from '../components/Person.vue';
 
 export default {
   components: {
@@ -26,5 +26,5 @@ export default {
       default: 0
     }
   }
-}
+};
 </script>

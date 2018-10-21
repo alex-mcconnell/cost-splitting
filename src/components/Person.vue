@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import { formatNumber } from '../mixins/formatNumber.js'
+import { formatNumber } from '../mixins/formatNumber.js';
 
 export default {
   props: {
@@ -78,7 +78,7 @@ export default {
         name: '',
         spent: 0
       }
-    }
+    };
   },
   mixins: [formatNumber],
   computed: {
@@ -93,54 +93,56 @@ export default {
     }
   },
   methods: {
-
     handleStartEdit() {
       this.isEditable = true;
-      this.editPerson = {name: this.name, spent: Number(this.spent)};
-      this.cachedPerson = Object.assign({}, this.editPerson);      
+      this.editPerson = { name: this.name, spent: Number(this.spent) };
+      this.cachedPerson = Object.assign({}, this.editPerson);
     },
     handleSaveEdit() {
       this.isEditable = false;
-      
+
       let id = this.id;
-      let editPerson = this.editPerson
-      this.$emit('edit-person', {editPerson, id})
+      let editPerson = this.editPerson;
+      this.$emit('edit-person', { editPerson, id });
     },
-      handleCancelEdit() {
-        this.isEditable = false;
-        this.editPerson = this.cachedPerson;
-      },
+    handleCancelEdit() {
+      this.isEditable = false;
+      this.editPerson = this.cachedPerson;
+    },
     handleDeletePerson() {
       let id = this.id;
       this.$emit('delete-person', id);
     }
   }
-}
+};
 </script>
 
 <style scoped>
-  li:hover {
-    cursor: default;
-  }
+li:hover {
+  cursor: default;
+}
 
-  svg[data-icon="trash-alt"]:hover, svg[data-icon="undo"]:hover {
-    color: #F3969A;
-    cursor: pointer;
-  }
+svg[data-icon='trash-alt']:hover,
+svg[data-icon='undo']:hover {
+  color: #f3969a;
+  cursor: pointer;
+}
 
-  svg[data-icon="edit"]:hover, svg[data-icon="save"]:hover {
-    color: #78C2AD;
-    cursor: pointer;
+svg[data-icon='edit']:hover,
+svg[data-icon='save']:hover {
+  color: #78c2ad;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  h2,
+  h3 {
+    font-size: 14px;
+    margin: 0;
   }
-  
-  @media screen and (max-width: 600px) {
-    h2, h3 {
-      font-size: 14px;
-      margin: 0;
-    }
-    .edit-inputs {
-      display: flex;
-      flex-wrap: wrap;
-    }
+  .edit-inputs {
+    display: flex;
+    flex-wrap: wrap;
   }
+}
 </style>

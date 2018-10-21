@@ -45,7 +45,7 @@ export default {
         name: '',
         spent: null
       }
-    }
+    };
   },
   methods: {
     handleAddPerson() {
@@ -55,12 +55,12 @@ export default {
       };
 
       this.$emit('add-person', newPerson);
-      
+
       // Clear fields and refocus cursor
       this.person.name = '';
       this.person.spent = null;
       document.querySelector('#nameInput').focus();
     }
   }
-}
+};
 </script>
