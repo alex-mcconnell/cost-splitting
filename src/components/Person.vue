@@ -1,8 +1,14 @@
 <template>
   <li v-if="!isEditable" class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
     <div class="d-flex align-items-center">
-      <font-awesome-icon icon="edit" class="mr-3" @click="handleStartEdit" />
-      <font-awesome-icon icon="trash-alt" class="mr-3" @click="handleDeletePerson" />   
+      <font-awesome-icon 
+        icon="edit" 
+        class="mr-3" 
+        @click="handleStartEdit" />
+      <font-awesome-icon 
+        icon="trash-alt" 
+        class="mr-3" 
+        @click="handleDeletePerson" />   
       <h3>{{ name }} spent {{ spentFormatted }}</h3>
     </div>
     <h2><span class="badge" :class="pillColor">{{ owedFormatted }}</span></h2>
@@ -10,8 +16,14 @@
 
   <li v-else class="list-group-item d-flex justify-content-between align-items-center">
     <div class="d-flex align-items-center">
-      <font-awesome-icon icon="save" class="mr-3" @click="handleSaveEdit" />
-      <font-awesome-icon icon="undo" class="mr-3" @click="handleCancelEdit" />
+      <font-awesome-icon 
+        icon="save" 
+        class="mr-3" 
+        @click="handleSaveEdit" />
+      <font-awesome-icon 
+        icon="undo" 
+        class="mr-3" 
+        @click="handleCancelEdit" />
       <div class="edit-inputs d-flex align-items-center">
         <div>
           <input 
@@ -120,9 +132,7 @@ export default {
     color: #78C2AD;
     cursor: pointer;
   }
-
-
-
+  
   @media screen and (max-width: 600px) {
     h2, h3 {
       font-size: 14px;

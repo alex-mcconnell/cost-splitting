@@ -9,8 +9,14 @@
           <p>You put a lot of work into this...</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" @click="$emit('reset-list')">Yes</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="$emit('cancel-reset-list')">Cancel</button>
+          <button 
+            type="button" 
+            class="btn btn-primary" 
+            @click="$emit('reset-list')">Yes</button>
+          <button 
+            type="button" 
+            class="btn btn-secondary"
+            @click="$emit('cancel-reset-list')">Cancel</button>
         </div>
       </div>
     </div>
@@ -26,7 +32,7 @@ export default {
 </script>
 
 <style>
-.modal {
-  background-color: rgba(46, 46, 46, 0.85);
-}
+  .modal {
+    background-color: rgba(46, 46, 46, 0.85);
+  }
 </style>

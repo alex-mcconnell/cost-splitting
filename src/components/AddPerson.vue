@@ -28,7 +28,9 @@
             </div>
           </div>
           <div class="col-auto p-2">
-            <button type="submit" class="btn btn-primary">Add Person</button>
+            <button 
+              type="submit" 
+              class="btn btn-primary">Add Person</button>
           </div>
         </div>
       </fieldset>
@@ -62,7 +64,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

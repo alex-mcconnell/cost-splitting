@@ -26,7 +26,7 @@
     <reset-modal 
       @cancel-reset-list="cancelModalDisplay = 'none'"
       @reset-list="resetList"
-      :style="{display: cancelModalDisplay}" ></reset-modal>
+      :style="{display: cancelModalDisplay}" />
   </div>
 </template>
 
