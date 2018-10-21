@@ -6,7 +6,7 @@
       <hr class="pb-5">
       <p v-if="people.length == 0" class="text-center"><span class="text-muted">Add a person to get started</span></p>
       <div  v-else>
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-center">
           <button
             class="btn btn-info mr-3"
             @click="handleSort" >Sort by $ Owed <font-awesome-icon 

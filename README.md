@@ -5,14 +5,14 @@ Simple Vue app that calculates who owes what when splitting costs between friend
 - [X] Create Person
   - [X] Name and amount spent entry
   - [X] Person is added to list when created
-- [ ] Person List
+- [X] Person List
   - [X] Displays all added people
   - [X] Displays name, spent, and amount owed
   - [X] Ability to delete person that has already been added
   - [X] Ability to edit a person that has already been added
-  - [ ] Ability to sort the list by amount owed
+  - [X] Ability to sort the list by amount owed
   - [X] Store list in local storage so it persists
-  - [ ] Ability to reset list
+  - [X] Ability to reset list
 - [X] Keep track of the total cost being split
 
 #### Stretch Goals
