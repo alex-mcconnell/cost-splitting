@@ -4,7 +4,8 @@
         <div class="row justify-content-center">
           <div class="col-sm-auto p-2">
             <input 
-              type="text" 
+              type="text"
+              maxlength="30"
               class="form-control"
               id="nameInput"
               placeholder="Name"
@@ -19,7 +20,7 @@
               <input 
                 type="number" 
                 class="form-control" 
-                min="0.00" 
+                min="0.00"
                 step="0.01" 
                 aria-label="Amount (to the nearest cent)" 
                 placeholder="Spent"

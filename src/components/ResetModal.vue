@@ -1,6 +1,6 @@
 <template>
-  <div class="modal" :style="{'display': display}">
-    <div class="modal-dialog d-flex" role="document">
+  <div class="modal d-flex align-items-center justify-content-center" :style="{'display': display}">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Are you sure?</h5>

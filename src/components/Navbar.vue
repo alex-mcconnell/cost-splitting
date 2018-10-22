@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-dark bg-primary fixed-top">
+    <nav class="navbar navbar-dark bg-primary fixed-top" id="nav">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">
           <font-awesome-icon icon="hand-holding-usd" class="mr-3 mb-1" />Cost Splitting
@@ -21,3 +21,17 @@ export default {
   }
 };
 </script>
+
+<style>
+@media screen and (max-width: 500px) {
+  .navbar-header, 
+  .navbar-right {
+    float: left;
+    text-align: center;
+    width: 100%;
+  }
+  .navbar-brand {
+    float: none;
+  }
+}
+</style>

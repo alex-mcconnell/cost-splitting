@@ -1,59 +1,51 @@
 <template>
-  <li v-if="!isEditable" class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-    <div class="d-flex align-items-center">
+  <li v-if="!isEditable" class="list-group-item d-flex align-items-center">
       <font-awesome-icon 
         icon="edit" 
         class="mr-3" 
         @click="handleStartEdit" />
       <font-awesome-icon 
-        icon="trash-alt" 
+        icon="trash-alt"
         class="mr-3" 
-        @click="handleDeletePerson" />   
-      <h3>{{ name }} spent {{ spentFormatted }}</h3>
-    </div>
-    <h2><span class="badge" :class="pillColor">{{ owedFormatted }}</span></h2>
+        @click="handleDeletePerson" />
+    <h3>{{ name }} spent {{ spentFormatted }}</h3>
+    <h2 class="ml-auto"><span class="badge" :class="pillColor">{{ owedFormatted }}</span></h2>
   </li>
 
-  <li v-else class="list-group-item d-flex justify-content-between align-items-center">
-    <div class="d-flex align-items-center">
-      <font-awesome-icon 
-        icon="save" 
-        class="mr-3" 
-        @click="handleSaveEdit" />
-      <font-awesome-icon 
-        icon="undo" 
-        class="mr-3" 
-        @click="handleCancelEdit" />
-      <div class="edit-inputs d-flex align-items-center">
-        <div>
-          <input 
-          type="text" 
-          class="form-control"
-          v-model="editPerson.name"
-          id="nameInput"
-          placeholder="Name"
-          required>
-        </div>     
-        <h3>&nbsp;spent&nbsp;</h3>
-        <div>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">$</span>
-            </div>
-            <input 
-              type="number" 
-              class="form-control" 
-              min="0.00" 
-              step="0.01" 
-              aria-label="Amount (to the nearest cent)" 
-              placeholder="Spent"
-              v-model="editPerson.spent"
-              required >
-          </div>
+  <li v-else class="list-group-item d-flex align-items-center">
+    <font-awesome-icon 
+      icon="save" 
+      class="mr-3" 
+      @click="handleSaveEdit" />
+    <font-awesome-icon 
+      icon="undo"
+      class="mr-3"
+      @click="handleCancelEdit" />
+    <div class="d-flex flex-wrap align-items-center edit-fields">
+      <input 
+        type="text"
+        class="form-control"
+        v-model="editPerson.name"
+        id="name-input"
+        placeholder="Name"
+        required> 
+      <h3>&nbsp;spent&nbsp;</h3>
+      <div class="input-group flex-wrap-none" id="spent-input">
+        <div class="input-group-prepend">
+          <span class="input-group-text">$</span>
         </div>
+        <input 
+          type="number" 
+          class="form-control"
+          min="0.00" 
+          step="0.01" 
+          aria-label="Amount (to the nearest cent)" 
+          placeholder="Spent"
+          v-model="editPerson.spent"
+          required >
       </div>
     </div>
-    <h2 class="ml-2"><span class="badge" :class="pillColor">{{ owedFormatted }}</span></h2>
+    <h2 class="ml-auto"><span class="badge" :class="pillColor">{{ owedFormatted }}</span></h2>
   </li>
 </template>
 
@@ -134,15 +126,21 @@ svg[data-icon='save']:hover {
   cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
-  h2,
-  h3 {
+#name-input {
+  max-width: 200px;
+}
+
+#spent-input {
+  max-width: 200px;
+}
+
+
+
+@media screen and (max-width: 576px) {
+  h3,
+  h2 {
     font-size: 14px;
-    margin: 0;
-  }
-  .edit-inputs {
-    display: flex;
-    flex-wrap: wrap;
+    margin-bottom: 0;
   }
 }
 </style>

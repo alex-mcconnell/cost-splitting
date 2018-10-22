@@ -9,8 +9,8 @@
         <div class="d-flex justify-content-center">
           <button
             class="btn btn-info mr-3"
-            @click="handleSort" >Sort by $ Owed <font-awesome-icon 
-            :icon="sortAsc ? 'angle-up' : 'angle-down'" /></button>
+            @click="handleSort" >Sort By $ Owed <font-awesome-icon 
+            :icon="sortDesc ? 'angle-up' : 'angle-down'" /></button>
             <button
             class="btn btn-danger"
             @click="cancelModalDisplay = 'block'">Reset List</button>  
@@ -24,7 +24,7 @@
       </div>
     </div>
     <reset-modal 
-      @cancel-reset-list="cancelModalDisplay = 'none'"
+      @cancel-reset-list="cancelModalDisplay = 'none !important'"
       @reset-list="resetList"
       :style="{display: cancelModalDisplay}" />
   </div>
@@ -54,7 +54,7 @@ export default {
   data() {
     return {
       people: [],
-      sortAsc: true,
+      sortDesc: true,
       cancelModalDisplay: 'none'
     };
   },
@@ -81,23 +81,23 @@ export default {
       this.people.splice(id, 1, person);
     },
     handleSort() {
-      this.sortAsc = !this.sortAsc;
+      this.sortDesc = !this.sortDesc;
 
       this.people.sort((a, b) => {
         if (a.spent - this.amtOwedPerPerson < b.spent - this.amtOwedPerPerson) {
-          return this.sortAsc ? 1 : -1;
+          return this.sortDesc ? 1 : -1;
         } else if (
           a.spent - this.amtOwedPerPerson >
           b.spent - this.amtOwedPerPerson
         ) {
-          return !this.sortAsc ? 1 : -1;
+          return !this.sortDesc ? 1 : -1;
         }
         return 0;
       });
     },
     resetList() {
       this.people = [];
-      this.cancelModalDisplay = 'none';
+      this.cancelModalDisplay = 'none !important';
     }
   },
   watch: {
