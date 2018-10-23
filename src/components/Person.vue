@@ -24,6 +24,7 @@
     <div class="d-flex flex-wrap align-items-center edit-fields">
       <input 
         type="text"
+        maxlength="30"
         class="form-control"
         v-model="editPerson.name"
         id="name-input"
@@ -134,13 +135,19 @@ svg[data-icon='save']:hover {
   max-width: 200px;
 }
 
-
+  .badge {
+    min-width: 120px;
+  }
 
 @media screen and (max-width: 576px) {
   h3,
   h2 {
     font-size: 14px;
     margin-bottom: 0;
+  }
+
+  .badge {
+    min-width: 50px;
   }
 }
 </style>

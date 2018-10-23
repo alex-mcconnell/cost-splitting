@@ -2,7 +2,7 @@
   <div id="app">
     <navbar :totalCost="totalCostFormatted" />
     <div class="container pt-5">
-      <add-person @add-person="people.push($event)" />
+      <add-person @add-person="handleAddPerson($event)" />
       <hr class="pb-5">
       <p v-if="people.length == 0" class="text-center"><span class="text-muted">Add a person to get started</span></p>
       <div  v-else>
@@ -55,7 +55,7 @@ export default {
     return {
       people: [],
       sortDesc: true,
-      cancelModalDisplay: 'none'
+      cancelModalDisplay: 'none !important'
     };
   },
   computed: {
@@ -72,13 +72,39 @@ export default {
     }
   },
   methods: {
+    handleAddPerson(data) {
+      let person = {
+        name: data.name,
+        spent: Number(data.spent)
+      };
+
+      let isMatch = this.people.findIndex(p => {
+        return p.name === person.name;
+      });
+
+      if (isMatch > -1) {
+        this.people[isMatch].spent += person.spent;
+      } else {
+        this.people.push(person);
+      }
+    },
     handleEditPerson(data) {
       let id = data.id;
       let person = {
-        name: data.editPerson.name,
+        name: data.editPerson.name.trim(),
         spent: Number(data.editPerson.spent)
       };
-      this.people.splice(id, 1, person);
+
+      let isMatch = this.people.findIndex(p => {
+        return p.name === person.name;
+      });
+
+      if (isMatch > -1 && isMatch != id) {
+        this.people[isMatch].spent += person.spent;
+        this.people.splice(id, 1)
+      } else {
+        this.people.splice(id, 1, person);
+      }
     },
     handleSort() {
       this.sortDesc = !this.sortDesc;

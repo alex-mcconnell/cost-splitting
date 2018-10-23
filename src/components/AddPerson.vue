@@ -51,7 +51,7 @@ export default {
   methods: {
     handleAddPerson() {
       let newPerson = {
-        name: this.person.name,
+        name: this.person.name.trim(),
         spent: Number(this.person.spent)
       };
 

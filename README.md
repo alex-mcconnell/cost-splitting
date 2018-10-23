@@ -20,8 +20,9 @@ Simple Vue app that calculates who owes what when splitting costs between friend
 - [ ] Ability to export the list
 - [ ] Ability to import a list
 - [ ] Ability to generate a payment plan
-- [ ] Recognize when a duplicate name has been entered and add to existing person
+- [X] Recognize when a duplicate name has been entered and add to existing person
 - [X] Make it look real nice on desktop and mobile
+- [ ] Component-ize and refactor more of the code
   
 
 ## Project setup
