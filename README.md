@@ -1,5 +1,5 @@
 # Cost Splitting App
-Simple Vue app that calculates who owes what when splitting costs between friends when everyone paid a different amount.  This is the first of ten simple Vue apps I am building over the course of the next year to learn Vue.js.
+Simple Vue app that calculates who owes what when splitting costs between friends when everyone paid a different amount.  This is the first of ten simple Vue apps I am building over the course of the next year to learn Vue.js.  Demo here: https://alex-mcconnell.github.io/cost-splitting
 
 ## To Do
 - [X] Create Person
