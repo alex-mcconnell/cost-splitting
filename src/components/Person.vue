@@ -135,15 +135,20 @@ svg[data-icon='save']:hover {
   max-width: 200px;
 }
 
-  .badge {
-    min-width: 120px;
-  }
+.badge {
+  min-width: 120px;
+  align-self: center;
+}
+
+h3,
+h2 {
+  margin-bottom: 0;
+}
 
 @media screen and (max-width: 576px) {
   h3,
   h2 {
     font-size: 14px;
-    margin-bottom: 0;
   }
 
   .badge {
