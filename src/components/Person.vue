@@ -29,6 +29,7 @@
         v-model="editPerson.name"
         id="name-input"
         placeholder="Name"
+        autocomplete="off"
         required> 
       <h3>&nbsp;spent&nbsp;</h3>
       <div class="input-group flex-wrap-none" id="spent-input">
@@ -149,6 +150,7 @@ h2 {
   h3,
   h2 {
     font-size: 14px;
+    margin: 5px 0px;
   }
 
   .badge {

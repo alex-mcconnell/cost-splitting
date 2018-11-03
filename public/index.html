@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Cost Splitting</title>
-    <link rel="stylesheet" href="">
+    <link rel="icon" href="<%= BASE_URL %>bank.png">
   </head>
-  <body>
+  <body style="height: 100vh; display: flex; flex-direction: column">
     <noscript>
       <strong>We're sorry but cost-splitting doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <footer style="flex-shrink: 0; padding: 20px;">
+      <div class="container text-center">
+        <p style="margin: 0;">Application built by <a href="http://www.alexmcc.me" target="_blank">Alex McConnell</a> © 2018 - <a href="https://github.com/alex-mcconnell/cost-splitting" target="_blank">View Code</a></p>
+      </div>
+    </footer>
   </body>
 </html>

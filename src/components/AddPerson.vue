@@ -10,6 +10,7 @@
               id="nameInput"
               placeholder="Name"
               v-model="person.name"
+              autocomplete="off"
               required>
           </div>
           <div class="col-sm-auto p-2">

@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <navbar :totalCost="totalCostFormatted" />
-    <div class="container pt-5">
+    <navbar />
+    <div class="container d-flex justify-content-center text-center pt-5">
+      <h2><b>Total Cost: </b><span class="text-muted">{{ totalCostFormatted }}</span></h2>
+    </div>
+    <div class="container">
       <add-person @add-person="handleAddPerson($event)" />
       <hr class="pb-5">
       <p v-if="people.length == 0" class="text-center"><span class="text-muted">Add a person to get started</span></p>
@@ -13,7 +16,7 @@
             :icon="sortDesc ? 'angle-up' : 'angle-down'" /></button>
             <button
             class="btn btn-danger"
-            @click="cancelModalDisplay = 'block'">Reset List</button>  
+            @click="handleReset">Reset List</button>  
         </div>
         <person-list
           class="pt-5"
@@ -23,10 +26,6 @@
           @edit-person="handleEditPerson($event)" />        
       </div>
     </div>
-    <reset-modal 
-      @cancel-reset-list="cancelModalDisplay = 'none !important'"
-      @reset-list="resetList"
-      :style="{display: cancelModalDisplay}" />
   </div>
 </template>
 
@@ -34,16 +33,15 @@
 import Navbar from './components/Navbar.vue';
 import AddPerson from './components/AddPerson.vue';
 import PersonList from './components/PersonList.vue';
-import ResetModal from './components/ResetModal.vue';
 
+import swal from 'sweetalert';
 import { formatNumber } from './mixins/formatNumber.js';
 
 export default {
   components: {
     Navbar: Navbar,
     AddPerson: AddPerson,
-    PersonList: PersonList,
-    ResetModal: ResetModal
+    PersonList: PersonList
   },
   mixins: [formatNumber],
   mounted() {
@@ -121,9 +119,26 @@ export default {
         return 0;
       });
     },
-    resetList() {
-      this.people = [];
-      this.cancelModalDisplay = 'none !important';
+    handleReset() {
+      swal("Are you sure? You worked really hard on this...", {
+        buttons: {
+          yes: {
+            text: "Yes",
+            value: true
+          },
+          no: {
+            text: "No",
+            value: false
+          },
+          default: false,
+        },
+        className: "reset-modal" 
+      })
+      .then((value) => {
+        if (value) {
+          this.people = [];
+        }
+      });
     }
   },
   watch: {
@@ -137,8 +152,26 @@ export default {
 };
 </script>
 
-<style scoped>
-.container {
-  margin-top: 56px;
+<style>
+
+.swal-button--yes {
+  background-color: #78c2ad;
 }
+
+.swal-button--no {
+  background-color: #f3969a;
+}
+
+.reset-modal .swal-button--yes:hover {
+  background-color: #78c2adc5 !important;
+}
+
+.reset-modal .swal-button--no:hover {
+  background-color: #f3969ac5 !important;
+}
+
+#app {
+  flex: 1 0 auto;
+}
+
 </style>
